@@ -1,7 +1,9 @@
 package me.whiteakyloff.entityapi.entity.impl.animal;
 
 import lombok.Getter;
+
 import me.whiteakyloff.entityapi.entity.FakeAgeableEntity;
+
 import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;

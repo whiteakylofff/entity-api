@@ -1,6 +1,5 @@
 package me.whiteakyloff.entityapi.entity.impl;
 
-
 import lombok.var;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -57,7 +56,6 @@ public class FakePlayer extends FakeLivingEntity
 
         this.updateSkinPart(PlayerSkinPart.TOTAL);
     }
-
 
     public void updateSkinPart(byte skinParts) {
         var beeVersion = MinecraftProtocolVersion.getVersion(MinecraftVersion.BEE_UPDATE);

@@ -14,7 +14,11 @@ public class FakeSkeleton extends FakeLivingEntity
     private boolean swingingArms;
 
     public FakeSkeleton(Location location) {
-        super(EntityType.SKELETON, location);
+        this(EntityType.SKELETON, location);
+    }
+
+    public FakeSkeleton(EntityType entityType, Location location) {
+        super(entityType, location);
     }
 
     public void setSwingingArms(boolean swingingArms) {
