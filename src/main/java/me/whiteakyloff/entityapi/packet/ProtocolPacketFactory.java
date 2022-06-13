@@ -25,6 +25,14 @@ import com.google.common.collect.ImmutableList;
 @SuppressWarnings("all")
 public class ProtocolPacketFactory
 {
+    public WrapperPlayServerEntityDestroy createDestroyEntityPacket(int... entityIds) {
+        var destroyPacket = new WrapperPlayServerEntityDestroy();
+
+        destroyPacket.setEntityIds(entityIds);
+
+        return destroyPacket;
+    }
+
     public WrapperPlayServerMount createMountPacket(int entityId, int... entityIds) {
         var mountPacket = new WrapperPlayServerMount();
 
@@ -32,14 +40,6 @@ public class ProtocolPacketFactory
         mountPacket.setPassengerIds(entityIds);
 
         return mountPacket;
-    }
-
-    public WrapperPlayServerEntityDestroy createDestroyEntityPacket(int... entityIds) {
-        var destroyPacket = new WrapperPlayServerEntityDestroy();
-
-        destroyPacket.setEntityIds(entityIds);
-
-        return destroyPacket;
     }
 
     public WrapperPlayServerEntityLook createEntityLookPacket(int entityId, Location location) {

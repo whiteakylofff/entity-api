@@ -73,16 +73,15 @@ public abstract class FakeEntity
         this.receivers.forEach(this::sendEntityTeleportPacket);
     }
 
+    public boolean hasReceiver(Player player) {
+        return this.receivers.contains(player);
+    }
+
     public void addReceiver(Player player) {
         this.receivers.add(player);
 
         this.sendSpawnPacket(player);
-
         this.getEntityEquipment().updateEquipmentPacket(player);
-    }
-
-    public boolean hasReceiver(Player player) {
-        return this.receivers.contains(player);
     }
 
     public void removeReceiver(Player player) {
@@ -229,12 +228,12 @@ public abstract class FakeEntity
         ProtocolPacketFactory.createMountPacket(this.entityId, entityIds).sendPacket(player);
     }
 
-    protected final void sendEntityTeleportPacket(Player player) {
-        ProtocolPacketFactory.createEntityTeleportPacket(this.entityId, this.location).sendPacket(player);
-    }
-
     protected final void sendEntityLookPacket(Player player) {
         ProtocolPacketFactory.createEntityLookPacket(this.entityId, this.location).sendPacket(player);
+    }
+
+    protected final void sendEntityTeleportPacket(Player player) {
+        ProtocolPacketFactory.createEntityTeleportPacket(this.entityId, this.location).sendPacket(player);
     }
 
     protected final void sendHeadRotationPacket(Player player) {
@@ -279,11 +278,20 @@ public abstract class FakeEntity
                 .filter(fakeEntity -> fakeEntity.getEntityId() == id).findFirst().orElse(null);
     }
 
+    protected static final int CURRENT_VERSION = MinecraftProtocolVersion.getCurrentVersion();
+    protected static final int AQUATIC_VERSION = MinecraftProtocolVersion.getVersion(MinecraftVersion.AQUATIC_UPDATE);
+    protected static final int VILLAGE_VERSION = MinecraftProtocolVersion.getVersion(MinecraftVersion.VILLAGE_UPDATE);
+    protected static final int BEE_UPDATE = MinecraftProtocolVersion.getVersion(MinecraftVersion.BEE_UPDATE);
+    protected static final int NETHER_UPDATE = MinecraftProtocolVersion.getVersion(MinecraftVersion.NETHER_UPDATE);
+    protected static final int NETHER_UPDATE_2 = MinecraftProtocolVersion.getVersion(MinecraftVersion.NETHER_UPDATE_2);
+    protected static final int CAVES_CLIFFS_1 = MinecraftProtocolVersion.getVersion(MinecraftVersion.CAVES_CLIFFS_1);
+
     protected static final WrappedDataWatcher.Serializer BYTE_SERIALIZER = WrappedDataWatcher.Registry.get(Byte.class);
     protected static final WrappedDataWatcher.Serializer INT_SERIALIZER = WrappedDataWatcher.Registry.get(Integer.class);
     protected static final WrappedDataWatcher.Serializer FLOAT_SERIALIZER = WrappedDataWatcher.Registry.get(Float.class);
     protected static final WrappedDataWatcher.Serializer STRING_SERIALIZER = WrappedDataWatcher.Registry.get(String.class);
     protected static final WrappedDataWatcher.Serializer BOOLEAN_SERIALIZER = WrappedDataWatcher.Registry.get(Boolean.class);
+    protected static final WrappedDataWatcher.Serializer UUID_SERIALIZER = WrappedDataWatcher.Registry.getUUIDSerializer(true);
     protected static final WrappedDataWatcher.Serializer ROTATION_SERIALIZER = WrappedDataWatcher.Registry.get(Vector3F.getMinecraftClass());
     protected static final WrappedDataWatcher.Serializer CHAT_COMPONENT_SERIALIZER = WrappedDataWatcher.Registry.getChatComponentSerializer();
     protected static final WrappedDataWatcher.Serializer ITEMSTACK_SERIALIZER = WrappedDataWatcher.Registry.get(MinecraftReflection.getItemStackClass());

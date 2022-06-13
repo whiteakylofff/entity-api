@@ -3,8 +3,8 @@ package me.whiteakyloff.entityapi.entity.impl;
 import lombok.Getter;
 
 import me.whiteakyloff.entityapi.entity.FakeEntity;
-
 import me.whiteakyloff.entityapi.packet.entity.WrapperPlayServerSpawnEntity;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;

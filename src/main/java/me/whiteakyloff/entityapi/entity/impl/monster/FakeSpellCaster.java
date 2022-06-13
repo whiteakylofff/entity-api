@@ -18,7 +18,7 @@ public abstract class FakeSpellCaster extends FakeIllager
     public void setSpell(Spell spell) {
         this.spell = spell;
 
-        this.sendDataWatcherObject(13, INT_SERIALIZER, spell.ordinal());
+        this.sendDataWatcherObject(13, BYTE_SERIALIZER, spell.ordinal());
     }
 
     public enum Spell {
