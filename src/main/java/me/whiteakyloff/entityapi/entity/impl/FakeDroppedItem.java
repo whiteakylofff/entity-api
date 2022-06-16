@@ -29,8 +29,8 @@ public class FakeDroppedItem extends FakeEntity
     public void setItemStack(ItemStack itemStack) {
         this.itemStack = itemStack;
 
-        this.getDataWatcher().getWatchableObjects().forEach(wrappedWatchableObject -> wrappedWatchableObject.setDirtyState(false));
         this.sendDataWatcherObject(6, ITEMSTACK_SERIALIZER, itemStack);
+        this.getDataWatcher().getWatchableObjects().forEach(wrappedWatchableObject -> wrappedWatchableObject.setDirtyState(false));
     }
 
     public int getSpawnTypeId() {
