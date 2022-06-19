@@ -57,7 +57,7 @@ public abstract class FakeLivingEntity extends FakeEntity
     }
 
     public void playAnimation(FakeEntityAnimation entityAnimation) {
-        this.getReceivers().forEach(receiver -> playAnimation(receiver, entityAnimation));
+        this.getReceivers().forEach(receiver -> this.playAnimation(receiver, entityAnimation));
     }
 
     public void playAnimation(Player player, FakeEntityAnimation entityAnimation) {
