@@ -12,7 +12,7 @@ import org.bukkit.entity.EntityType;
 
 @Getter
 @SuppressWarnings("unused")
-public class FakeLivingEntity extends FakeEntity
+public abstract class FakeLivingEntity extends FakeEntity
 {
     protected float health;
 
